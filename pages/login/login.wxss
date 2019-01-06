@@ -3,6 +3,11 @@
   border-bottom: 1px #ececec solid;
 }
 
+.section-input {
+  height: 60rpx;
+  font-size: 38rpx;
+}
+
 .btn-area {
-  margin-top: 20px;
+  margin-top: 60px;
 }
