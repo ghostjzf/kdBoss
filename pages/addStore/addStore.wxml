@@ -1,0 +1,28 @@
+<view class='container add-store'>
+  <form bindsubmit="onSubmit">
+    <view class="section section-store flex">
+      <view class='section-title'>门店名称</view>
+      <input class='section-input' value='{{phoneno}}' name="name" maxlength='11' placeholder="门店名称" />
+    </view>
+    <view class="section section-store flex">
+      <view class='section-title'>门店地址</view>
+      <input class='section-input' name="address" maxlength='11' placeholder="门店地址" />
+    </view>
+    <view class="section section-store flex">
+      <view class='section-title'>门店类型</view>
+      <picker class='section-input' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">{{array[index]}}</view>
+      </picker>
+    </view>
+    <view class="section section-store flex">
+      <view class='section-title'>门店图片</view>
+      <view class='upload-text' bindtap='upload'>点此上传</view>
+    </view>
+    <image class='image' src='{{preview}}' wx:if="{{preview}}" mode='widthFix'></image>
+    <view class="section">
+    </view>
+    <view class="btn-area">
+      <button type='primary' form-type="submit" data-source='login'>提交</button>
+    </view>
+  </form>
+</view>

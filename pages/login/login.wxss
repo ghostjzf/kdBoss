@@ -1,6 +1,11 @@
+.login {
+  padding-top: 10rpx;
+}
+
 .section {
   padding: 20rpx;
   border-bottom: 1px #ececec solid;
+  background-color: #fff;
 }
 
 .section-input {

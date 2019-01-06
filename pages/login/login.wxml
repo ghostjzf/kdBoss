@@ -1,11 +1,14 @@
-<form class='login' bindsubmit="onSubmit">
-  <view class="section section-account">
-    <input class='section-input' name="account" placeholder="手机号" />
-  </view>
-  <view class="section section-password">
-    <input class='section-input' name="password" placeholder="密码" />
-  </view>
-  <view class="btn-area">
-    <button type='primary' form-type="submit">登录</button>
-  </view>
-</form>
+<view class='container login'>
+  <form class='container login' bindsubmit="onSubmit">
+    <view class="section section-account">
+      <input class='section-input' value='{{phoneno}}' name="phoneno" maxlength='11' placeholder="手机号" />
+    </view>
+    <view class="section section-password">
+      <input class='section-input' name="password" password placeholder="密码" />
+    </view>
+    <view class="btn-area">
+      <button type='primary' form-type="submit" data-source='login'>登录</button>
+      <button form-type="submit" data-source='register'>注册</button>
+    </view>
+  </form>
+</view>
