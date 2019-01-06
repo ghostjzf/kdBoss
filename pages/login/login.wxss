@@ -1,0 +1,8 @@
+.section {
+  padding: 20rpx;
+  border-bottom: 1px #ececec solid;
+}
+
+.btn-area {
+  margin-top: 20px;
+}
