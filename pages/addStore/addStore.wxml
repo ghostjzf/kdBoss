@@ -10,7 +10,7 @@
     </view>
     <view class="section section-store flex">
       <view class='section-title'>门店类型</view>
-      <picker class='section-input' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <picker class='section-input' name="type" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
         <view class="picker">{{array[index]}}</view>
       </picker>
     </view>
@@ -19,10 +19,8 @@
       <view class='upload-text' bindtap='upload'>点此上传</view>
     </view>
     <image class='image' src='{{preview}}' wx:if="{{preview}}" mode='widthFix'></image>
-    <view class="section">
-    </view>
     <view class="btn-area">
-      <button type='primary' form-type="submit" data-source='login'>提交</button>
+      <button type='primary' form-type="submit">提交</button>
     </view>
   </form>
 </view>

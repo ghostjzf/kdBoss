@@ -3,7 +3,8 @@
     "pages/login/login",
     "pages/index/index",
     "pages/user/user",
-    "pages/addStore/addStore"
+    "pages/addStore/addStore",
+    "pages/editStore/editStore"
   ],
   "window": {
     "backgroundTextStyle": "light",

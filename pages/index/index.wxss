@@ -1,4 +1,38 @@
 /**index.wxss**/
+.container {
+  padding: 20rpx 0;
+}
 .btn-add {
   margin-top: 20px;
+}
+
+.title {
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  font-size: 36rpx;
+}
+
+.list-item {
+  background-color: #fff;
+  padding: 30rpx 20rpx;
+  position: relative;
+  color: green;
+}
+
+.list-item::after {
+  content: "";
+  display: block;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  position: absolute;
+  right: 20rpx;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.info {
+  color: #be3e28;
+  text-align: center;
 }

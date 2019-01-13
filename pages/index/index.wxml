@@ -1,10 +1,15 @@
 <!--index.wxml-->
 <view class="container">
-  <view wx:if="{{isHasStore}}">
-    <view>负责门店</view>
+  <view wx:if="{{list.length}}">
+    <view class='title'>我的门店</view>
+    <view class='store-list'>
+      <view class='list-item' wx:for="{{list}}" wx:key="{{index}}" bindtap='edit'>
+        {{item.name}}
+      </view>
+    </view>
   </view>
   <view wx:else>
-    <view class='info'>*您还没有任何门店信息</view>
+    <view class='info'>抱歉, 您还没有任何门店信息！</view>
     <button class='btn-add' type='primary' bindtap='onAddStore'>新增门店</button>
   </view>
 </view>

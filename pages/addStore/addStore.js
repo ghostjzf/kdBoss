@@ -1,11 +1,14 @@
 // pages/addStore/addStore.js
+import http from "../../utils/http/index.js";
+import { API } from "../../utils/API/index.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: ['餐饮', '美容、美发、养生', '旅游', '酒店', '礼品店', '杂货店'],
+    array: ['餐饮', '健康养生', '旅游', '酒店', '礼品店', '杂货店'],
     preview: ''
   },
   bindPickerChange(e) {
@@ -24,20 +27,90 @@ Page({
         this.setData({
           preview: tempFilePaths[0]
         })
-        wx.uploadFile({
-          url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            user: 'test'
-          },
-          success(res) {
-            const data = res.data
-            console.log(res)
-            // do something
-          }
-        })
       },
+    })
+  },
+
+  recommendUpload() {
+    wx.chooseImage({
+      count: 5,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        console.log(res);
+        const tempFilePaths = res.tempFilePaths;
+
+        // this.setData({
+        //   preview: tempFilePaths[0]
+        // })
+      },
+    })
+  },
+
+  showMessage(field) {
+    wx.showModal({
+      content: field + "不能为空",
+      showCancel: false
+    })
+  },
+
+  onSubmit(e) {
+    const params = e.detail.value;
+    const preview = this.data.preview;
+
+    if (!params.name) {
+      this.showMessage("门店名称");
+
+      return;
+    };
+
+    if (!params.address) {
+      this.showMessage("门店地址");
+
+      return;
+    };
+
+    if (!params.type) {
+      this.showMessage("门店类型");
+
+      return;
+    };
+
+    if (!preview) {
+      this.showMessage("门店图片");
+
+      return;
+    }
+
+    wx.uploadFile({
+      url: 'http://192.168.0.100:9999/api/boss/upload', // 仅为示例，非真实的接口地址
+      filePath: preview,
+      name: 'file',
+      formData: {
+        phoneno: wx.getStorageSync("phoneno")
+      },
+      success: (res) => {
+        const image = JSON.parse(res.data).data
+
+        console.log(res)
+        
+        this.uploadForm(params, image);
+      }
+    });
+  },
+
+  uploadForm(params, image) {
+    http.post(API.createStore, {
+      ...params,
+      image: image,
+      phoneno: wx.getStorageSync("phoneno")
+    }).then(resp => {
+      console.log(resp);
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }).catch(error => {
+      console.log(error)
     })
   },
 

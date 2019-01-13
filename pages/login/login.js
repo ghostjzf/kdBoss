@@ -1,4 +1,7 @@
 // pages/login/login.js
+import http from "../../utils/http/index.js";
+import {API} from "../../utils/API/index.js"
+
 Page({
 
   /**
@@ -12,6 +15,22 @@ Page({
     const phoneno = e.detail.value.phoneno;
     const password = e.detail.value.password;
     const source = e.detail.target.dataset.source;
+
+    if (phoneno.length !== 11) {
+      wx.showToast({
+        title: '手机号不正确',
+      });
+
+      return;
+    }
+
+    if (password.length === 0) {
+      wx.showToast({
+        title: '密码不能为空',
+      });
+
+      return;
+    }
 
     // 缓存账号密码
     wx.setStorageSync('phoneno', phoneno);
@@ -28,20 +47,41 @@ Page({
       mask: true
     });
 
-    let timer = setTimeout(function () {
+    http.post(API.login, {
+      phoneno: phoneno,
+      password: password
+    }).then(resp => {
+      console.log(resp);
+      wx.showToast({
+        title: "登陆成功"
+      });
+
+      let timer = setTimeout(function () {
+        wx.hideLoading();
+        clearTimeout(timer);
+        wx.setStorageSync("phoneno", phoneno)
+
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }, 300);
+    }).catch(error => {
       wx.hideLoading();
-      clearTimeout(timer);
-      // 登陆成功跳转首页
-      wx.switchTab({
-        url: '../index/index',
+      wx.showModal({
+        title: '登录失败',
+        content: error.message,
+        showCancel: false,
+        confirmText: "知道了"
       })
-    }, 500);
+    })
   },
 
   register(phoneno, password) {
     wx.showToast({
       title: '注册成功',
     })
+
+    wx.setStorageSync("phoneno", phoneno);
 
     setTimeout(function () {
       // 登陆成功跳转首页
