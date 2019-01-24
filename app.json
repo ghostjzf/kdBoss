@@ -4,7 +4,13 @@
     "pages/index/index",
     "pages/user/user",
     "pages/addStore/addStore",
-    "pages/editStore/editStore"
+    "pages/storeDetail/storeDetail",
+    "pages/store/store",
+    "pages/edit/avatar/avatar",
+    "pages/edit/name/name",
+    "pages/edit/address/address",
+    "pages/edit/types/types",
+    "pages/edit/recommend/recommend"
   ],
   "window": {
     "backgroundTextStyle": "light",

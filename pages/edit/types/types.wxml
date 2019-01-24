@@ -1,0 +1,5 @@
+<view class='container'>
+  <picker class='section-input' name="type" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
+    <view class="picker">{{array[index]}}</view>
+  </picker>
+</view>

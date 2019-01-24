@@ -1,0 +1,6 @@
+.picker {
+  background-color: #fff;
+  padding: 25rpx 20rpx;
+  font-size: 32rpx;
+  position: relative;
+}

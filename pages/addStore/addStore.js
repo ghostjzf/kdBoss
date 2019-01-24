@@ -83,7 +83,7 @@ Page({
     }
 
     wx.uploadFile({
-      url: 'http://192.168.0.100:9999/api/boss/upload', // 仅为示例，非真实的接口地址
+      url: 'http://172.25.6.91:9999/api/boss/upload', // 仅为示例，非真实的接口地址
       filePath: preview,
       name: 'file',
       formData: {

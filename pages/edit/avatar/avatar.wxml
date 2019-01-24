@@ -1,0 +1,7 @@
+<view class='container'>
+  <image class='img' bindlongtap='showMenu' src="http://172.25.6.161:9999/api/customer{{image}}?phoneno={{phoneno}}" mode='widthFix'></image>
+
+  <view>
+    <view></view>
+  </view>
+</view>

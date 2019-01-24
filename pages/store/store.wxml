@@ -1,0 +1,22 @@
+<view class="container">
+  <view class='item item-avatar' bindtap='editAvatar'>
+    <view>门店头像</view>
+    <image class='avatar' mode="aspectFill" src='http://172.25.6.91:9999/api/boss{{detail.image}}?phoneno={{detail.phoneno}}'></image>
+  </view>
+  <view class='item' bindtap='editStore'>
+    <view>门店名称</view>
+    <view class='valueProp'>{{detail.name}}</view>
+  </view>
+  <view class='item' data-source='type' bindtap='editTypes'>
+    <view>门店类型</view>
+    <view class='valueProp'>{{detail.type}}</view>
+  </view>
+  <view class='item' bindtap='editAddress'>
+    <view>门店地址</view>
+    <view class='valueProp'>{{detail.address}}</view>
+  </view>
+  <view class='item' bindtap='editRecommend'>
+    <view>精品图片</view>
+    <view></view>
+  </view>
+</view>

@@ -1,4 +1,4 @@
-// pages/editStore/editStore.js
+// pages/edit/avatar/avatar.js
 Page({
 
   /**
@@ -8,11 +8,18 @@ Page({
 
   },
 
+  showMenu() {
+    console.log(111)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      image: options.avatar,
+      phoneno: options.phoneno
+    })
   },
 
   /**

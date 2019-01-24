@@ -1,0 +1,33 @@
+/* pages/editStore/editStore.wxss */
+.item {
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 60rpx 30rpx 20rpx;
+  border-bottom: 1px #ececec solid;
+}
+
+.item-avatar {
+  padding-right: 6rpx;
+}
+
+.item::after {
+  content: "";
+  display: block;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  position: absolute;
+  right: 20rpx;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.avatar {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 60rpx;
+}

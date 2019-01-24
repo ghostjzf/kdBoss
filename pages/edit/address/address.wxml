@@ -1,0 +1,3 @@
+<view class='container'>
+  <input class='address' focus="true" value="{{value}}" bindinput="bindinput"></input>
+</view>

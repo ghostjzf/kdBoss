@@ -1,0 +1,21 @@
+/* pages/edit/recommend/recommend.wxss */
+.img-list {
+  
+}
+
+.img-item {
+  width: 250rpx;
+  height: 250rpx;
+  float: left;
+}
+
+.clear{
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+}

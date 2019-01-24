@@ -11,8 +11,9 @@ Page({
     list: []
   },
   edit() {
+    wx.setStorageSync("id", this.data.list[0].id);
     wx.navigateTo({
-      url: '../editStore/editStore',
+      url: '../store/store',
     })
   },
   onAddStore() {
