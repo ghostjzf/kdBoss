@@ -1,6 +1,6 @@
 /* pages/edit/recommend/recommend.wxss */
-.img-list {
-  
+.container {
+  background-color: #fff;
 }
 
 .img-item {
@@ -10,12 +10,10 @@
 }
 
 .clear{
-  content: " ";
-  display: block;
   clear: both;
 }
 
 .button {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 60px;
 }

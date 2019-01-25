@@ -1,6 +1,7 @@
 <view class="container">
-  <view class='img-list clear'>
+  <view class='img-list'>
     <image class='img-item' wx:for="{{list}}" wx:key="{{index}}" src="http://172.25.6.91:9999/api/boss/public/images/store/recommend/{{item}}?phoneno={{phoneno}}"></image>
+    <view class="clear"></view> 
   </view>
-  <button class='button' type='primary' bindtap='upload'>点击上传</button>
+  <button class='button' type='primary' bindtap='upload' disabled='{{list.length >= 6}}'>点击上传</button>
 </view>
