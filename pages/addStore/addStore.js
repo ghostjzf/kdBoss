@@ -8,13 +8,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['餐饮', '健康养生', '旅游', '酒店', '礼品店', '杂货店'],
-    preview: ''
+    multiArray: [['餐饮', '健康养生', '休闲娱乐', '美容美发', '礼品店', '酒店'], ['餐饮']],
+    multiIndex: [0, 0]
   },
+
+  bindMultiPickerColumnChange(e) {
+    const column = e.detail.column; // '修改的列'
+    const value = e.detail.value; // '修改的值'
+
+    const data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    }
+    data.multiIndex[e.detail.column] = e.detail.value
+    switch (column) {
+      case 0:
+        switch (data.multiIndex[0]) {
+          case 0:
+            data.multiArray[1] = ["餐饮"]
+            break
+          case 1:
+            data.multiArray[1] = ["运动健康", "幼儿"]
+            break
+          case 2:
+            data.multiArray[1] = ["全部", "KTV", "网咖", "电影院", "台球厅", "电玩", "酒吧", "公园", "旅行", "钓鱼"]
+            break
+          case 3:
+            data.multiArray[1] = ["美发", "美容"]
+            break
+          case 5:
+            data.multiArray[1] = ["星级酒店", "经济旅馆"]
+            break
+        }
+        data.multiIndex[1] = 0
+        break
+    }
+    console.log(data.multiIndex)
+    this.setData(data)
+  },
+
   bindPickerChange(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      multiIndex: e.detail.value
     })
   },
 
