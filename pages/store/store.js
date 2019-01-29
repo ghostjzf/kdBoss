@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: [],
+    detail: {}
   },
 
   editAvatar(e) {
@@ -49,14 +50,25 @@ Page({
     })
   },
 
-  getDetail(id) {
+  getList() {
+    http.get(API.types)
+    .then(resp => {
+      this.setData({
+        list: resp.data
+      })
+    })
+  },
+
+  getDetail(id, getList) {
     http.get(API.storeDetail, {
       id: id
     }).then(resp => {
-      console.log(resp);
+      const types = resp.data.type.split(",");
+      const list = this.data.list;
 
       this.setData({
-        detail: resp.data
+        detail: resp.data,
+        type: list.filter(item => String(item.pid) === types[0] && String(item.cid) === types[1])[0].name
       })
     }).catch(error => {
       console.log(error)
@@ -67,7 +79,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDetail(options.id);
+    this.getList();
   },
 
   /**

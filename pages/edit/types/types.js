@@ -1,4 +1,7 @@
 // pages/edit/types/types.js
+import http from "../../../utils/http/index.js";
+import { API } from "../../../utils/API/index.js"
+
 Page({
 
   /**
@@ -17,29 +20,13 @@ Page({
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
     }
-    data.multiIndex[e.detail.column] = e.detail.value
-    switch (column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ["餐饮"]
-            break
-          case 1:
-            data.multiArray[1] = ["运动健康", "幼儿"]
-            break
-          case 2:
-            data.multiArray[1] = ["全部","KTV","网咖","电影院","台球厅","电玩","酒吧","公园","旅行","钓鱼"]
-            break
-          case 3:
-            data.multiArray[1] = ["美发", "美容"]
-            break
-          case 5:
-            data.multiArray[1] = ["星级酒店", "经济旅馆"]
-            break
-        }
-        data.multiIndex[1] = 0
-        break
+    data.multiIndex[e.detail.column] = e.detail.value;
+    if (column === 0) {
+      data.multiArray[1] = this.data.list.filter(item => (
+        item.pid === data.multiIndex[0] + 1
+      )).map(item => item.name)
     }
+    
     console.log(data.multiIndex)
     this.setData(data)
   },
@@ -51,14 +38,31 @@ Page({
     })
   },
 
+  getList(types) {
+    http.get(API.types)
+    .then(res => {
+      this.setData({
+        list: res.data,
+      }, () => {
+        const data = {
+          multiArray: this.data.multiArray,
+          multiIndex: types.split(",").map(item => item - 1)
+        }
+
+        data.multiArray[1] = this.data.list.filter(item => (
+          item.pid === data.multiIndex[0] + 1
+        )).map(item => item.name)
+
+        this.setData(data)
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.array.indexOf(options.types))
-    this.setData({
-      index: this.data.array.indexOf(options.types)
-    })
+    this.getList(options.types);
   },
 
   /**
@@ -86,7 +90,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    http.post(API.update, {
+      type: this.data.multiIndex.map(item => item + 1).join()
+    })
   },
 
   /**

@@ -1,4 +1,7 @@
 // pages/edit/name/name.js
+import http from "../../../utils/http/index.js";
+import { API } from "../../../utils/API/index.js"
+
 Page({
 
   /**
@@ -9,9 +12,9 @@ Page({
   },
 
   bindinput(e) {
-    let value = e.target.value;
+    let value = e.detail.value;
 
-    console.log(value)
+    this.setData({value})
   },
 
   /**
@@ -48,7 +51,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    http.post(API.update, {
+      name: this.data.value
+    })
   },
 
   /**

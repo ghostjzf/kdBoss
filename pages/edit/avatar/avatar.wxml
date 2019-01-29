@@ -1,7 +1,11 @@
-<view class='container'>
-  <image class='img' bindlongtap='showMenu' src="http://172.25.6.91:9999/api/customer{{image}}?phoneno={{phoneno}}" mode='widthFix'></image>
+<view class='container' style='opacity: {{showMenu ? 0.9 : 1}}'>
+  <image class='img' bindlongpress='showMenu' src="http://172.25.6.158:9999/api/customer{{image}}?phoneno={{phoneno}}" mode='widthFix'></image>
+</view>
 
-  <view>
-    <view></view>
+<view class='menu-mask' animation="{{animationData}}" bindtap='hideMenu'>
+  <view class="menu">
+    <view class="menu-item" catchtap='reupload'>重新上传</view>
+    <view class="menu-item" catchtap='save'>保存至相册</view>
+    <view class="menu-item btn-cancel" bindtap='hideMenu'>取消</view>
   </view>
 </view>

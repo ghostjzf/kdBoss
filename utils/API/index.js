@@ -5,5 +5,7 @@ export const API = {
   "storeList": "/api/boss/store/list",
   "createStore": "/api/boss/store/add",
   "storeDetail": "/api/boss/store/detail",
-  "recommend": "/api/boss/public/images/store/recommend"
+  "recommend": "/api/boss/public/images/store/recommend",
+  "update": "/api/boss/store/update",
+  "types": "/api/boss/types/small"
 };

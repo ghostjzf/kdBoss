@@ -32,6 +32,12 @@
   margin-right: 60rpx;
 }
 
+.label {
+  min-width: 150rpx;
+  margin-right: 20rpx;
+}
+
 .valueProp {
   color: #666666;
+  font-size: 32rpx;
 }
