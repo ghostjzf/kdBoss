@@ -126,7 +126,8 @@ Page({
         phoneno: wx.getStorageSync("phoneno")
       },
       success: (res) => {
-        
+        params.type = params.type.map(item => item + 1).join(",");
+        this.uploadForm(params, JSON.parse(res.data).data)
       }
     });
   },

@@ -51,6 +51,7 @@ Page({
           },
           success: (res) => {
             http.post(API.update, {
+              phoneno: wx.getStorageSync("phoneno"),
               image: JSON.parse(res.data).data
             }).then(() => {
               this.getDetail();

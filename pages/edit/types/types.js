@@ -91,6 +91,7 @@ Page({
    */
   onUnload: function () {
     http.post(API.update, {
+      phoneno: wx.getStorageSync("phoneno"),
       type: this.data.multiIndex.map(item => item + 1).join()
     })
   },

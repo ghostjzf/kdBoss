@@ -53,6 +53,7 @@ Page({
    */
   onUnload: function () {
     http.post(API.update, {
+      phoneno: wx.getStorageSync("phoneno"),
       address: this.data.value
     })
   },

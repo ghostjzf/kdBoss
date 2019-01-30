@@ -17,11 +17,10 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: (res) => {
-        console.log(res);
         const tempFilePaths = res.tempFilePaths;
 
         wx.uploadFile({
-          url: 'http://172.25.6.91:9999/api/boss/recommend/upload', // 仅为示例，非真实的接口地址
+          url: 'http://172.25.6.158:9999/api/boss/recommend/upload', // 仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'file',
           formData: {
@@ -31,8 +30,6 @@ Page({
             const image = JSON.parse(res.data).data
 
             this.getList();
-
-            console.log(res)
           }
         });
 
@@ -47,7 +44,6 @@ Page({
     http.get(API.recommend, {
       phoneno: wx.getStorageSync("phoneno")
     }).then(resp => {
-      console.log(resp)
       this.setData({
         list: resp.data.items,
         phoneno: wx.getStorageSync("phoneno")

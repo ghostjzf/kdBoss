@@ -9,6 +9,10 @@
       <input class='section-input' name="address" maxlength='11' placeholder="门店地址" />
     </view>
     <view class="section section-store flex">
+      <view class='section-title'>人均消费</view>
+      <input class='section-input' type='number' name="consumption" placeholder="人均消费" />
+    </view>
+    <view class="section section-store flex">
       <view class='section-title'>门店类型</view>
       <picker class='section-input' name="type" mode='multiSelector' bindchange="bindPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
         <view class="picker">{{multiArray[0][multiIndex[0]]}}-{{multiArray[1][multiIndex[1]]}}</view>
