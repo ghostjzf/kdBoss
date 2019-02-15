@@ -20,29 +20,13 @@ Page({
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
     }
-    data.multiIndex[e.detail.column] = e.detail.value
-    switch (column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ["餐饮"]
-            break
-          case 1:
-            data.multiArray[1] = ["运动健康", "幼儿"]
-            break
-          case 2:
-            data.multiArray[1] = ["全部", "KTV", "网咖", "电影院", "台球厅", "电玩", "酒吧", "公园", "旅行", "钓鱼"]
-            break
-          case 3:
-            data.multiArray[1] = ["美发", "美容"]
-            break
-          case 5:
-            data.multiArray[1] = ["星级酒店", "经济旅馆"]
-            break
-        }
-        data.multiIndex[1] = 0
-        break
+    data.multiIndex[e.detail.column] = e.detail.value;
+    if (column === 0) {
+      data.multiArray[1] = this.data.list.filter(item => (
+        item.pid === data.multiIndex[0] + 1
+      )).map(item => item.name)
     }
+
     console.log(data.multiIndex)
     this.setData(data)
   },
@@ -119,7 +103,7 @@ Page({
     }
 
     wx.uploadFile({
-      url: 'http://172.25.6.158:9999/api/boss/upload', // 仅为示例，非真实的接口地址
+      url: 'http://172.25.6.117:9999/api/boss/upload', // 仅为示例，非真实的接口地址
       filePath: preview,
       name: 'file',
       formData: {
@@ -147,11 +131,20 @@ Page({
     })
   },
 
+  getList() {
+    http.get(API.types)
+      .then(res => {
+        this.setData({
+          list: res.data,
+        })
+      })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getList();
   },
 
   /**

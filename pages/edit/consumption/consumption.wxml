@@ -1,0 +1,3 @@
+<view class='container'>
+  <input class='consumption' type='number' focus="true" value="{{value}}" bindinput="bindinput"></input>
+</view>

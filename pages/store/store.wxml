@@ -7,6 +7,10 @@
     <view class='label'>门店名称</view>
     <view class='valueProp'>{{detail.name}}</view>
   </view>
+  <view class='item' bindtap='editConsumpt'>
+    <view class='label'>人均消费</view>
+    <view class='valueProp'>{{detail.consumption}}元/人</view>
+  </view>
   <view class='item' data-source='type' bindtap='editTypes'>
     <view class='label'>门店类型</view>
     <view class='valueProp'>{{type}}</view>

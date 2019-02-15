@@ -1,4 +1,4 @@
-const HOST = "http://172.25.6.158:9999";
+const HOST = "http://172.25.6.117:9999";
 // const HOST = "http://192.168.0.100:9999"; 
 
 class Http {

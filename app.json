@@ -10,7 +10,8 @@
     "pages/edit/name/name",
     "pages/edit/address/address",
     "pages/edit/types/types",
-    "pages/edit/recommend/recommend"
+    "pages/edit/recommend/recommend",
+    "pages/edit/consumption/consumption"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -36,6 +36,14 @@ Page({
     })
   },
 
+  editConsumpt() {
+    const detail = this.data.detail;
+
+    wx.navigateTo({
+      url: '../edit/consumption/consumption?consumption=' + detail.consumption,
+    })
+  },
+
   editTypes() {
     const detail = this.data.detail;
 

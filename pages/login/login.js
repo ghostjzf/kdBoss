@@ -77,18 +77,28 @@ Page({
   },
 
   register(phoneno, password) {
-    wx.showToast({
-      title: '注册成功',
+    console.log(typeof phoneno)
+    http.post(API.register, {
+      phoneno: phoneno,
+      password: password
+    }).then(resp => {
+      console.log(resp);
+      wx.showToast({
+        title: "注册成功"
+      });
+
+      let timer = setTimeout(function () {
+        wx.hideLoading();
+        clearTimeout(timer);
+        wx.setStorageSync("phoneno", phoneno)
+
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }, 300);
+    }).catch(error => {
+      wx.hideLoading();
     })
-
-    wx.setStorageSync("phoneno", phoneno);
-
-    setTimeout(function () {
-      // 登陆成功跳转首页
-      wx.switchTab({
-        url: '../index/index',
-      })
-    }, 500);
   },
 
   /**
